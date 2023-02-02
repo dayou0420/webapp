@@ -5,16 +5,16 @@ import (
 	"net/http"
 )
 
-type applicatin struct{}
+type application struct{}
 
 func main() {
 	// set up an app config
-	app := applicatin{}
+	app := application{}
 
 	// get application routes
 	mux := app.routes()
 
-	// print put a message
+	// print out a message
 	log.Println("Starting server on port 8080...")
 
 	// start the server
