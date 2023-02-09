@@ -40,11 +40,11 @@ func (f *Form) Has(filed string) bool {
 	return true
 }
 
-func (f *Form) Required(fileds ...string) {
-	for _, filed := range fileds {
+func (f *Form) Required(fields ...string) {
+	for _, filed := range fields {
 		value := f.Data.Get(filed)
 		if strings.TrimSpace(value) == "" {
-			f.Errors.Add(filed, "This filed cannot be blank")
+			f.Errors.Add(filed, "This fields cannot be blank")
 		}
 	}
 }
