@@ -7,8 +7,8 @@ import (
 
 type errors map[string][]string
 
-func (e errors) Get(filed string) string {
-	errorSlice := e[filed]
+func (e errors) Get(field string) string {
+	errorSlice := e[field]
 	if len(errorSlice) == 0 {
 		return ""
 	}
@@ -16,8 +16,8 @@ func (e errors) Get(filed string) string {
 	return errorSlice[0]
 }
 
-func (e errors) Add(filed, message string) {
-	e[filed] = append(e[filed], message)
+func (e errors) Add(field, message string) {
+	e[field] = append(e[field], message)
 }
 
 type Form struct {
@@ -32,8 +32,8 @@ func NewForm(data url.Values) *Form {
 	}
 }
 
-func (f *Form) Has(filed string) bool {
-	x := f.Data.Get(filed)
+func (f *Form) Has(field string) bool {
+	x := f.Data.Get(field)
 	if x == "" {
 		return false
 	}
@@ -41,10 +41,10 @@ func (f *Form) Has(filed string) bool {
 }
 
 func (f *Form) Required(fields ...string) {
-	for _, filed := range fields {
-		value := f.Data.Get(filed)
+	for _, field := range fields {
+		value := f.Data.Get(field)
 		if strings.TrimSpace(value) == "" {
-			f.Errors.Add(filed, "This fields cannot be blank")
+			f.Errors.Add(field, "This fields cannot be blank")
 		}
 	}
 }
