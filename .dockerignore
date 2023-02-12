@@ -1,1 +1,3 @@
 tmp
+/cmd/web/coverage.out
+postgres-data
