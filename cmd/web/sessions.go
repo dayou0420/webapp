@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/alexedwards/scs/v2"
 	"net/http"
 	"time"
+
+	"github.com/alexedwards/scs/v2"
 )
 
 func getSession() *scs.SessionManager {

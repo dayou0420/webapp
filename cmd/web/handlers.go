@@ -15,7 +15,7 @@ func (app *application) Home(w http.ResponseWriter, r *http.Request) {
 	var td = make(map[string]any)
 
 	if app.Session.Exists(r.Context(), "test") {
-		msg := app.Session.Get(r.Context(), "test")
+		msg := app.Session.GetString(r.Context(), "test")
 		td["test"] = msg
 	} else {
 		app.Session.Put(r.Context(), "test", "Hit this page at "+time.Now().UTC().String())
@@ -66,6 +66,13 @@ func (app *application) Login(w http.ResponseWriter, r *http.Request) {
 
 	email := r.Form.Get("email")
 	password := r.Form.Get("password")
+
+	user, err := app.DB.GetUserByEmail(email)
+	if err != nil {
+		log.Println(err)
+	}
+
+	log.Println("From database:", user.FirstName)
 
 	log.Println(email, password)
 
