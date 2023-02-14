@@ -28,7 +28,6 @@ func main() {
 	}
 	env := os.Getenv("GO_ENV")
 	flag.StringVar(&app.DSN, "dsn", env, "Posgtres connection")
-
 	//flag.StringVar(&app.DSN, "dsn", "host=postgres port=5432 user=postgres password=postgres dbname=users sslmode=disable timezone=UTC connect_timeout=5", "Posgtres connection")
 	flag.Parse()
 
