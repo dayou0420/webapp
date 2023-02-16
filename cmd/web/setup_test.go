@@ -14,7 +14,7 @@ func TestMain(m *testing.M) {
 	pathToTemplates = "./../../templates/"
 
 	app.Session = getSession()
-	err := godotenv.Load("../../.test_env")
+	err := godotenv.Load("../../.env")
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
