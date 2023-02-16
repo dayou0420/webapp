@@ -12,5 +12,8 @@ jobs:
       - go/mod-download
       - go/save-cache
       - run:
+            name: Decode dotenv file
+            command: echo $GO_ENV | base64 --decode > .env
+      - run:
           name: Run tests
           command: go test -v ./cmd/web
