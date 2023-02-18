@@ -13,22 +13,22 @@ jobs:
       - go/save-cache
       - checkout
         - run:
-          name: "Setup custom environment variables"
+          name: Setup custom environment variables
           command: echo ${GO_ENV} >> .env
         - run:
-          name: "What branch am I on?"
+          name: What branch am I on?
           command: echo ${GO_ENV}
         - run:
-          name: "What branch am I on now?"
+          name: What branch am I on now?
           command: echo $GO_ENV
         - run:
-          name: "What was my custom environment variable?"
+          name: What was my custom environment variable?
           command: echo ${GO_ENV}
         - run:
-          name: "Print an env var stored in the Project"
+          name: Print an env var stored in the Project
           command: echo ${GO_ENV}
         - run:
-          name: "Print an env var stored in a Context"
+          name: Print an env var stored in a Context
           command: echo ${GO_ENV}
       - run:
           name: Run tests
