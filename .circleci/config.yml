@@ -11,9 +11,22 @@ jobs:
       - go/load-cache
       - go/mod-download
       - go/save-cache
-      - run:
-            name: Setup custom environment variables
-            command: echo ${GO_ENV} >> .env && cat .env
+      - checkout
+            - run:
+                name: "What branch am I on?"
+                command: echo ${GO_ENV}
+            - run:
+                name: "What branch am I on now?"
+                command: echo $GO_ENV
+            - run:
+                name: "What was my custom environment variable?"
+                command: echo ${GO_ENV}
+            - run:
+                name: "Print an env var stored in the Project"
+                command: echo ${GO_ENV}
+            - run:
+                name: "Print an env var stored in a Context"
+                command: echo ${GO_ENV}
       - run:
           name: Run tests
           command: go test -v ./cmd/web
