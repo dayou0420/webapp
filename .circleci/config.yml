@@ -14,7 +14,7 @@ jobs:
       - checkout
         - run:
           name: Setup custom environment variables
-          command: echo ${GO_ENV} >> .env
+          command: echo '${GO_ENV}' >> .env
         - run:
           name: What branch am I on?
           command: echo ${GO_ENV}
