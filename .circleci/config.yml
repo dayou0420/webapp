@@ -13,7 +13,7 @@ jobs:
       - go/save-cache
       - run: |
             touch .env
-            echo ${{ GO_ENV }} >> .env
+            echo ${GO_ENV} >> .env
             cat .env
       - run:
           name: Run tests
