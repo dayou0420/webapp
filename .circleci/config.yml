@@ -11,10 +11,9 @@ jobs:
       - go/load-cache
       - go/mod-download
       - go/save-cache
-      - run: |
-            touch .env
-            echo ${GO_ENV} >> .env
-            cat .env
+      - run:
+            name: Setup custom environment variables
+            command: echo ${GO_ENV} >> .env && cat .env
       - run:
           name: Run tests
           command: go test -v ./cmd/web
