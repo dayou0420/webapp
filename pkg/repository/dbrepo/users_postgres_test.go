@@ -1,3 +1,5 @@
+//go:build integration
+
 package dbrepo
 
 import (
@@ -120,7 +122,7 @@ func Test_pingDB(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_InsertUser(t *testing.T) {
+func TestPostgresDBRepoInsertUser(t *testing.T) {
 	testUser := data.User{
 		FirstName: "Admin",
 		LastName:  "User",
@@ -141,7 +143,7 @@ func TestPostgresDBRepo_InsertUser(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_AllUsers(t *testing.T) {
+func TestPostgresDBRepoAllUsers(t *testing.T) {
 	users, err := testRepo.AllUsers()
 	if err != nil {
 		t.Errorf("all users reports an error: %s", err)
@@ -173,7 +175,7 @@ func TestPostgresDBRepo_AllUsers(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_GetUser(t *testing.T) {
+func TestPostgresDBRepoGetUser(t *testing.T) {
 	user, err := testRepo.GetUser(1)
 	if err != nil {
 		t.Errorf("error getting user by id: %s", err)
@@ -190,7 +192,7 @@ func TestPostgresDBRepo_GetUser(t *testing.T) {
 
 }
 
-func TestPostgresDBRepo_GetUserByEmail(t *testing.T) {
+func TestPostgresDBRepoGetUserByEmail(t *testing.T) {
 	user, err := testRepo.GetUserByEmail("jack@smith.com")
 	if err != nil {
 		t.Errorf("error getting user by email: %s", err)
@@ -201,7 +203,7 @@ func TestPostgresDBRepo_GetUserByEmail(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_UpdateUser(t *testing.T) {
+func TestPostgresDBRepoUpdateUser(t *testing.T) {
 	user, _ := testRepo.GetUser(2)
 	user.FirstName = "Jane"
 	user.Email = "jane@smith.com"
@@ -217,7 +219,7 @@ func TestPostgresDBRepo_UpdateUser(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_DeleteUser(t *testing.T) {
+func TestPostgresDBRepoDeleteUser(t *testing.T) {
 	err := testRepo.DeleteUser(2)
 	if err != nil {
 		t.Errorf("error deleting user id 2: %s", err)
@@ -229,7 +231,7 @@ func TestPostgresDBRepo_DeleteUser(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_ResetPassword(t *testing.T) {
+func TestPostgresDBRepoResetPassword(t *testing.T) {
 	err := testRepo.ResetPassword(1, "password")
 	if err != nil {
 		t.Error("error resetting user's password", err)
@@ -246,7 +248,7 @@ func TestPostgresDBRepo_ResetPassword(t *testing.T) {
 	}
 }
 
-func TestPostgresDBRepo_InsertUserImage(t *testing.T) {
+func TestPostgresDBRepoInsertUserImage(t *testing.T) {
 	var image data.UserImage
 	image.UserID = 1
 	image.FileName = "test.jpg"
